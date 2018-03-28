@@ -2,6 +2,17 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'dkprice/vim-easygrep'
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/lh-tags'
+Plugin 'LucHermitte/lh-dev'
+Plugin 'LucHermitte/lh-brackets'
+Plugin 'LucHermitte/vim-refactor'
+Plugin 'vim-scripts/c.vim'
+Plugin 'WolfgangMehner/c-support'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'VundleVim/Vundle.vim'
@@ -10,7 +21,6 @@ Plugin 'thinca/vim-quickrun'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'nathanalderson/yang.vim'
 Plugin 'wannesm/wmgraphviz.vim'
-Plugin 'WolfgangMehner/c-support'
 Plugin 'python-mode/python-mode'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Raimondi/delimitMate'
@@ -32,8 +42,6 @@ Plugin 'houzy/jeffy-plugins'
 Plugin 'vim-scripts/L9'
 Plugin 'vim-scripts/Mark'
 Plugin 'vim-scripts/OmniCppComplete'
-Plugin 'rkulla/pydiction'
-Plugin 'msanders/snipmate.vim'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-sensible'
@@ -43,9 +51,9 @@ call vundle#end()"required
 filetype plugin indent on "required
 "Trigger configuration. Do not use <tab> if you use
 "https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 autocmd FileType html,css EmmetInstall
 
@@ -58,7 +66,6 @@ if has("syntax")
 endif
 filetype on
 filetype plugin indent on           " auto detect file type
-call pathogen#infect()              " use pathogen to manage plugins
 
 set nocompatible                    " out of Vi compatible mode
 set number                          " show line number
@@ -383,4 +390,7 @@ nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
+"change color
+hi Pmenu ctermfg=black ctermbg=yellow  guibg=#444444
+hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
 
