@@ -1,53 +1,63 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'dkprice/vim-easygrep'
-Plugin 'LucHermitte/lh-vim-lib'
-Plugin 'LucHermitte/lh-tags'
-Plugin 'LucHermitte/lh-dev'
-Plugin 'LucHermitte/lh-brackets'
-Plugin 'LucHermitte/vim-refactor'
-Plugin 'vim-scripts/c.vim'
-Plugin 'WolfgangMehner/c-support'
-Plugin 'honza/vim-snippets'
-Plugin 'SirVer/ultisnips'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'alfredodeza/pytest.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'thinca/vim-quickrun'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'nathanalderson/yang.vim'
-Plugin 'wannesm/wmgraphviz.vim'
-Plugin 'python-mode/python-mode'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'iamcco/mathjax-support-for-mkdp'
-Plugin 'iamcco/markdown-preview.vim'
-Plugin 'Tabular'
-Plugin 'w0rp/ale'
-Plugin 'nerdtree-ack'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'rizzatti/dash.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/a.vim'
-Plugin 'vim-scripts/AutoComplPop'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'vim-scripts/CmdlineComplete'
-Plugin 'mattn/emmet-vim'
-Plugin 'houzy/jeffy-plugins'
-Plugin 'vim-scripts/L9'
-Plugin 'vim-scripts/Mark'
-Plugin 'vim-scripts/OmniCppComplete'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'tpope/vim-sensible'
-Plugin 'vim-scripts/vividchalk.vim'
-call vundle#end()"required
-"All of your Plugins must be added before the following line
+"set rtp+=~/.vim/bundle/Vundle.vim
+call plug#begin('~/.vim/plugged')
+Plug 'python-mode/python-mode'
+Plug 'Yggdroot/indentLine'
+Plug 'jiangmiao/auto-pairs'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'junegunn/vim-plug'
+Plug 'airblade/vim-gitgutter'
+Plug 'justmao945/vim-clang'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'Yggdroot/LeaderF'
+Plug 'scrooloose/nerdcommenter' 
+Plug 'dkprice/vim-easygrep'
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/lh-tags'
+Plug 'LucHermitte/lh-dev'
+Plug 'LucHermitte/lh-brackets'
+Plug 'LucHermitte/vim-refactor'
+Plug 'vim-scripts/c.vim'
+Plug 'WolfgangMehner/c-support'
+Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+Plug 'flazz/vim-colorschemes'
+Plug 'alfredodeza/pytest.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'thinca/vim-quickrun'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'nathanalderson/yang.vim'
+Plug 'wannesm/wmgraphviz.vim'
+"Plug 'python-mode/python-mode'
+Plug 'Shougo/vimproc.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'w0rp/ale'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/AutoComplPop'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'vim-scripts/CmdlineComplete'
+Plug 'mattn/emmet-vim'
+Plug 'houzy/jeffy-plugins'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/Mark'
+Plug 'vim-scripts/OmniCppComplete'
+Plug 'vim-scripts/taglist.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'tpope/vim-sensible'
+Plug 'vim-scripts/vividchalk.vim'
+Plug 'ryanoasis/vim-devicons'
+call plug#end() "required
+"All of your Plugs must be added before the following line
 filetype plugin indent on "required
 "Trigger configuration. Do not use <tab> if you use
 "https://github.com/Valloric/YouCompleteMe.
@@ -116,7 +126,7 @@ set showmatch                       "设置匹配模式，显示匹配的括号
 set linebreak                       "整词换行
 set whichwrap=b,s,<,>,,]           "光标从行首和行末时可以跳到另一行去
 
-set encoding=utf-8
+set encoding=UTF-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,gb2312,gbk,gb18030
@@ -211,8 +221,6 @@ nmap <F6> :TagbarToggle<CR>
 "默认开启
 "autocmd VimEnter * Tlist
 "autocmd VimEnter * NERDTree
-autocmd FileType java set tags+=D:\tools\java\tags
-"autocmd FileType h,cpp,cc,c set tags+=D:\tools\cpp\tags
 "let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
 "设置tags
 set tags=tags
@@ -273,7 +281,7 @@ nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
 
 "}}}
 
-" Plugin Settings: {{{
+" Plug Settings: {{{
 if has("win32") " win32 system
     let $HOME  = $VIM
     let $VIMFILES = $HOME . "/vimfiles"
@@ -325,7 +333,7 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType c set omnifunc=ccomplete#Complete
 "nmap <F4> <Plug>(JavaComplete-Imports-Add)
 "imap <F4> <Plug>(JavaComplete-Imports-Add)
 "setlocal omnifunc=javacomplete#Complete
@@ -393,4 +401,6 @@ nmap <silent> <C-Right> :wincmd l<CR>
 "change color
 hi Pmenu ctermfg=black ctermbg=yellow  guibg=#444444
 hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+let g:Lf_ShortcutF = '<C-P>'
+
 
