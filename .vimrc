@@ -2,6 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 "set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/plugged')
+
 Plug 'python-mode/python-mode'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
