@@ -1,9 +1,21 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 call plug#begin('~/.vim/plugged')
+Plug 'jimhester/lintr'
+Plug 'rightson/vim-p4-syntax'
+Plug 'gilligan/vim-lldb'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'idanarye/vim-vebugger'
+Plug 'gagbo/vim-gnuplot'
+Plug 'Rykka/riv.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'kannokanno/previm'
+Plug 'tweekmonster/startuptime.vim'
+Plug 'simeji/winresizer'
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-startify'
-Plug 'myusuf3/numbers.vim'
+"Plug 'myusuf3/numbers.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mgedmin/coverage-highlight.vim'
 Plug 'wannesm/wmgraphviz.vim'
@@ -24,14 +36,14 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/vim-plug'
 Plug 'airblade/vim-gitgutter'
 Plug 'justmao945/vim-clang'
-Plug 'Yggdroot/LeaderF'
+"Plug 'Yggdroot/LeaderF'
 Plug 'scrooloose/nerdcommenter' 
-Plug 'dkprice/vim-easygrep'
-Plug 'LucHermitte/lh-vim-lib'
-Plug 'LucHermitte/lh-tags'
-Plug 'LucHermitte/lh-dev'
-Plug 'LucHermitte/lh-brackets'
-Plug 'LucHermitte/vim-refactor'
+"Plug 'dkprice/vim-easygrep'
+"Plug 'LucHermitte/lh-vim-lib'
+"Plug 'LucHermitte/lh-tags'
+"Plug 'LucHermitte/lh-dev'
+"Plug 'LucHermitte/lh-brackets'
+"Plug 'LucHermitte/vim-refactor'
 "Plug 'vim-scripts/c.vim'
 "Plug 'WolfgangMehner/c-support'
 Plug 'honza/vim-snippets'
@@ -42,10 +54,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'thinca/vim-quickrun'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'nathanalderson/yang.vim'
+"Plug 'nathanalderson/yang.vim'
 Plug 'wannesm/wmgraphviz.vim'
-Plug 'Shougo/vimproc.vim'
-Plug 'Raimondi/delimitMate'
+"Plug 'Shougo/vimproc.vim'
+Plug 'luochen1990/rainbow'
+"Plug 'Raimondi/delimitMate'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'w0rp/ale'
@@ -63,9 +76,9 @@ Plug 'vim-scripts/L9'
 Plug 'vim-scripts/Mark'
 Plug 'vim-scripts/OmniCppComplete'
 Plug 'vim-scripts/taglist.vim'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'tpope/vim-sensible'
-Plug 'vim-scripts/vividchalk.vim'
+"Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'tpope/vim-sensible'
+"Plug 'vim-scripts/vividchalk.vim'
 Plug 'ryanoasis/vim-devicons'
 call plug#end() "required
 "All of your Plugs must be added before the following line
@@ -153,15 +166,15 @@ if has("gui_running")
     set guioptions-=R " no right-hand vertically scrollbar
     set guioptions-=l " no left-hand scrollbar
     set guioptions-=L " no left-hand vertically scrollbar
-    autocmd GUIEnter * simalt ~x " window width and height
+    "autocmd GUIEnter * simalt ~x " window width and height
     source $VIMRUNTIME/delmenu.vim " the original menubar has an error on win32, so
     source $VIMRUNTIME/menu.vim    " use this menubar
     language messages zh_CN.utf-8 " use chinese messages if has
 endif
 "auto add pyhton header --start
-"autocmd BufNewFile *.py 0r ~/.vim/vim_template/vim_python_header
-"autocmd BufNewFile *.py ks|call FileName()|'s
-"autocmd BufNewFile *.py ks|call CreatedTime()|'s
+autocmd BufNewFile *.py 0r ~/.vim/vim_template/vim_python_header
+autocmd BufNewFile *.py ks|call FileName()|'s
+autocmd BufNewFile *.py ks|call CreatedTime()|'s
 
 fun FileName()
     if line("$") > 10
@@ -270,27 +283,27 @@ nmap <silent> <leader>l :set nolist!<CR>
 nmap <C-E> :b#<CR>
 
 " ,e to fast finding files. just type beginning of a name and hit TAB
-nmap <leader>e :e **/
+"nmap <leader>e :e **/
 
-" Make shift-insert work like in Xterm
-"map <S-Insert> <MiddleMouse>
-"map! <S-Insert> <MiddleMouse>
+"" Make shift-insert work like in Xterm
+""map <S-Insert> <MiddleMouse>
+""map! <S-Insert> <MiddleMouse>
 
 
-" Ctrl-N to disable search match highlight
-nmap <silent> <C-N> :silent noh<CR>
+"" Ctrl-N to disable search match highlight
+"nmap <silent> <C-N> :silent noh<CR>
 
-" center display after searching
-nnoremap n   nzz
-nnoremap N   Nzz
-nnoremap *   *zz
-nnoremap #   #zz
-nnoremap g*  g*zz
-nnoremap g#  g#z
+"" center display after searching
+"nnoremap n   nzz
+"nnoremap N   Nzz
+"nnoremap *   *zz
+"nnoremap #   #zz
+"nnoremap g*  g*zz
+"nnoremap g#  g#z
 
 " Grep
-nnoremap <silent> <F7> :Grep<CR>
-nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
+"nnoremap <silent> <F7> :Grep<CR>
+"nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
 
 "}}}
 
@@ -337,11 +350,11 @@ set wildmenu
 "nmap <F8> :Tlist<CR>
 "nmap <Leader>t :TlistToggle<cr>
 "普通模式
-nmap <F8> :MarkdownPreview<CR>
+nmap <F8> :PrevimOpen<CR>
 
 " pydiction
 filetype plugin on
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascrīpt set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -385,18 +398,18 @@ let g:WMGraphviz_shelloptions = ""
 nmap <Leader>lv :w<CR>:! dot -Tpng -o %<.png % <CR>:! open %<.png <CR>
 nmap <Leader>ls :w<CR>:! dot -Tsvg -o %<.svg % <CR>:! open %<.svg <CR>
 nmap <Leader>lp :w<CR>:! dot -Tpdf -o %<.pdf % <CR>:! open %<.pdf <CR>
-let g:pymode_rope_lookup_project = 0
-let g:pyflakes_use_quickfix = 1
-let python_highlight_all = 1
 
 let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-map <Leader><leader>h <Plug>(easymotion-linebackward)
-map <Leader><Leader>j <Plug>(easymotion-j)
-map <Leader><Leader>k <Plug>(easymotion-k)
-map <Leader><leader>l <Plug>(easymotion-lineforward)
+nmap <Left> <Plug>(easymotion-linebackward)
+nmap <Down> <Plug>(easymotion-j)
+nmap <Up> <Plug>(easymotion-k)
+nmap <Right> <Plug>(easymotion-lineforward)
 " 重复上一次操作, 类似repeat插件, 很强大
 map <Leader><leader>. <Plug>(easymotion-repeat)
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
 
 " QuickRun
 let g:quickrun_config = {
@@ -407,14 +420,14 @@ let g:quickrun_config = {
 let g:quickrun_no_default_key_mappings = 1
 map <F10> :QuickRun<CR>
 "Map window switch
-nmap <silent> <C-Up> :wincmd k<CR>
-nmap <silent> <C-Down> :wincmd j<CR>
-nmap <silent> <C-Left> :wincmd h<CR>
-nmap <silent> <C-Right> :wincmd l<CR>
+map <silent> <C-Up> :wincmd k<CR>
+map <silent> <C-Down> :wincmd j<CR>
+map <silent> <C-Left> :wincmd h<CR>
+map <silent> <C-Right> :wincmd l<CR>
 "change color
 hi Pmenu ctermfg=black ctermbg=yellow  guibg=#444444
 hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
-let g:Lf_ShortcutF = '<C-P>'
+"let g:Lf_ShortcutF = '<C-P>'
 let g:acp_completeoptPreview = 1
 ""AsynComplete
 call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
@@ -438,11 +451,20 @@ call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
 \ 'blacklist': ['html'],
 \ 'completor': function('asyncomplete#sources#omni#completor')
 \  }))
+
 "python mode
+let g:pymode_rope_lookup_project = 0
+let g:pyflakes_use_quickfix = 1
+let python_highlight_all = 1
+let g:pymode_folding = 0
 let g:pymode_run = 0
 let g:pymode_python = 'python3'
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0    
+let g:pymode_breakpoint = 0
+let g:pymode_lint = 0
+
+
 
 "AutoComplPop
 let g:acp_completeoptPreview = 0
@@ -466,7 +488,9 @@ endif
 autocmd User asyncomplete_setup call asyncomplete#register_source(
     \ asyncomplete#sources#clang#get_source_options())
 "map go-to deinition
-nnoremap <C-b> :LspDefinition <CR> 
+nnoremap <Leader>b :LspDefinition <CR> 
+autocmd FileType typescript setlocal omnifunc=lsp#complete
+
 "codi
 let g:codi#interpreters = {
                   \ 'python': {
@@ -475,12 +499,38 @@ let g:codi#interpreters = {
                       \ },
                   \ }
 
-let g:codi#width = 60
+let g:codi#width = 40
+"rainbow
+let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	\	'operators': '_,_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	\	'separately': {
+	\		'*': {},
+	\		'tex': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+	\		},
+	\		'vim': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+	\		},
+	\		'html': {
+	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+	\		},
+	\		'css': 0,
+	\	}
+	\}
+let g:rainbow_active = 1
+let g:asyncomplete_smart_completion = 1
 
 
+"ale
+let g:ale_lint_on_enter = 1
+set cmdheight=2
 
+"termdebug
+let g:termdebug_wide = 100
+:packadd! termdebug
 
-
-
-
-
+"R syntax check
+let g:ale_r_lintr_lint_package = 1
