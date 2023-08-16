@@ -1,85 +1,48 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 call plug#begin('~/.vim/plugged')
-Plug 'jimhester/lintr'
+"Plug 'jceb/vim-orgmode'
+"Plug 'tpope/vim-speeddating'
+"Plug 'mattn/calendar-vim'
 Plug 'rightson/vim-p4-syntax'
-Plug 'gilligan/vim-lldb'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'roxma/vim-hug-neovim-rpc'
-"Plug 'idanarye/vim-vebugger'
-Plug 'gagbo/vim-gnuplot'
-Plug 'Rykka/riv.vim'
-Plug 'tyru/open-browser.vim'
+"Plug 'liuchengxu/vista.vim'
+Plug 'tpope/vim-surround'
 Plug 'kannokanno/previm'
-Plug 'tweekmonster/startuptime.vim'
-Plug 'simeji/winresizer'
-Plug 'metakirby5/codi.vim'
-Plug 'mhinz/vim-startify'
-"Plug 'myusuf3/numbers.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'mgedmin/coverage-highlight.vim'
-Plug 'wannesm/wmgraphviz.vim'
-Plug 'shemerey/vim-project'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'keremc/asyncomplete-clang.vim'
-Plug 'yami-beta/asyncomplete-omni.vim'
-Plug 'prabirshrestha/asyncomplete-gocode.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'python-mode/python-mode'
-Plug 'majutsushi/tagbar'
-Plug 'fatih/vim-go'
+Plug 'rhysd/clever-f.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+"Plug 'kassio/neoterm'
+Plug 'pechorin/any-jump.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/vim-plug'
-Plug 'airblade/vim-gitgutter'
+Plug 'rizzatti/dash.vim'
 Plug 'justmao945/vim-clang'
-"Plug 'Yggdroot/LeaderF'
 Plug 'scrooloose/nerdcommenter' 
-"Plug 'dkprice/vim-easygrep'
-"Plug 'LucHermitte/lh-vim-lib'
-"Plug 'LucHermitte/lh-tags'
-"Plug 'LucHermitte/lh-dev'
-"Plug 'LucHermitte/lh-brackets'
-"Plug 'LucHermitte/vim-refactor'
-"Plug 'vim-scripts/c.vim'
-"Plug 'WolfgangMehner/c-support'
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
 Plug 'flazz/vim-colorschemes'
-Plug 'alfredodeza/pytest.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'artur-shaik/vim-javacomplete2'
 Plug 'thinca/vim-quickrun'
 Plug 'Lokaltog/vim-easymotion'
-"Plug 'nathanalderson/yang.vim'
-Plug 'wannesm/wmgraphviz.vim'
-"Plug 'Shougo/vimproc.vim'
 Plug 'luochen1990/rainbow'
-"Plug 'Raimondi/delimitMate'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'w0rp/ale'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'rizzatti/dash.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/a.vim'
-Plug 'vim-scripts/AutoComplPop'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'vim-scripts/CmdlineComplete'
-Plug 'mattn/emmet-vim'
-Plug 'houzy/jeffy-plugins'
-Plug 'vim-scripts/L9'
-Plug 'vim-scripts/Mark'
-Plug 'vim-scripts/OmniCppComplete'
-Plug 'vim-scripts/taglist.vim'
-"Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'tpope/vim-sensible'
-"Plug 'vim-scripts/vividchalk.vim'
+"Plug 'houzy/jeffy-plugins'
 Plug 'ryanoasis/vim-devicons'
+"Plug 'lervag/vimtex'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'voldikss/vim-floaterm'
+Plug 'vim-scripts/AutoComplPop'
+
+
+
 call plug#end() "required
 "All of your Plugs must be added before the following line
 filetype plugin indent on "required
@@ -89,11 +52,11 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-autocmd FileType html,css EmmetInstall
 
 let g:user_emmet_install_global=0
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+"let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 
+let g:deoplete#enable_at_startup = 1
 " Global Settings: {{{
 if has("syntax")
     syntax on                       " highlight syntax
@@ -103,6 +66,7 @@ filetype plugin indent on           " auto detect file type
 
 set nocompatible                    " out of Vi compatible mode
 set number                          " show line number
+set rnu
 set cursorline
 set numberwidth=3                   " minimal culumns for line numbers
 set textwidth=0                     " do not wrap words (insert)
@@ -119,7 +83,7 @@ set mouse=a                         " use mouse in all mode
 set noerrorbells                    " do not use error bell
 set novisualbell                    " do not use visual bell
 set t_vb=                           " do not use terminal bell
-
+set clipboard=unnamed
 set wildignore=.svn,.git,*.swp,*.bak,*~,*.o,*.a
 set autowrite                       " auto save before commands like :next and :make
 set cursorline
@@ -172,9 +136,9 @@ if has("gui_running")
     language messages zh_CN.utf-8 " use chinese messages if has
 endif
 "auto add pyhton header --start
-autocmd BufNewFile *.py 0r ~/.vim/vim_template/vim_python_header
-autocmd BufNewFile *.py ks|call FileName()|'s
-autocmd BufNewFile *.py ks|call CreatedTime()|'s
+"autocmd BufNewFile *.py 0r ~/.vim/vim_template/vim_python_header
+"autocmd BufNewFile *.py ks|call FileName()|'s
+"autocmd BufNewFile *.py ks|call CreatedTime()|'s
 
 fun FileName()
     if line("$") > 10
@@ -198,56 +162,13 @@ endfun
 "auto add python header --end
 
 
-" vim-go
-syntax enable
-filetype plugin on
-let g:tagbar_width=20
-let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-    \ }
 
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-nmap <F6> :TagbarToggle<CR>
+"nmap <F6> :TagbarToggle<CR>
 
 "默认开启
-"autocmd VimEnter * Tlist
 "autocmd VimEnter * NERDTree
-"let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
 "设置tags
-set tags=tags
+"set tags=tags
 " Restore the last quit position when open file.
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -262,14 +183,6 @@ let maplocalleader = "\\"
 " map : -> <space>
 map <Space> :
 
-"map ˜->±
-map ± ~
-" move between windows
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -281,31 +194,6 @@ nmap <silent> <leader>l :set nolist!<CR>
 
 " Ctrol-E to switch between 2 last buffers
 nmap <C-E> :b#<CR>
-
-" ,e to fast finding files. just type beginning of a name and hit TAB
-"nmap <leader>e :e **/
-
-"" Make shift-insert work like in Xterm
-""map <S-Insert> <MiddleMouse>
-""map! <S-Insert> <MiddleMouse>
-
-
-"" Ctrl-N to disable search match highlight
-"nmap <silent> <C-N> :silent noh<CR>
-
-"" center display after searching
-"nnoremap n   nzz
-"nnoremap N   Nzz
-"nnoremap *   *zz
-"nnoremap #   #zz
-"nnoremap g*  g*zz
-"nnoremap g#  g#z
-
-" Grep
-"nnoremap <silent> <F7> :Grep<CR>
-"nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
-
-"}}}
 
 " Plug Settings: {{{
 if has("win32") " win32 system
@@ -331,80 +219,19 @@ let NERDTreeWinPos="left"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " Open a NERDTree
 nmap <F5> :NERDTreeToggle<cr>
-" Open Codi python
-nmap <F4> :Codi<cr>
-" taglist
-let g:Tlist_Auto_Open = 0
-let g:Tlist_WinWidth = 20
-let g:Tlist_Use_Right_Window = 1
-let g:Tlist_Auto_Update = 1
-let g:Tlist_Process_File_Always = 1
-let g:Tlist_Exit_OnlyWindow = 1
-let g:Tlist_Show_One_File = 1
-let g:Tlist_Enable_Fold_Column = 0
-let g:Tlist_Auto_Highlight_Tag = 1
-let g:Tlist_GainFocus_On_ToggleOpen = 1
-"let g:Tlist_Use_Horiz_Window=1
 set wildmenu
 
-"nmap <F8> :Tlist<CR>
-"nmap <Leader>t :TlistToggle<cr>
-"普通模式
-nmap <F8> :PrevimOpen<CR>
 
-" pydiction
-filetype plugin on
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascrīpt set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"nmap <F4> <Plug>(JavaComplete-Imports-Add)
-"imap <F4> <Plug>(JavaComplete-Imports-Add)
-"setlocal omnifunc=javacomplete#Complete
-"autocmd FileType java set omnifunc=javacomplete#Complete
-"autocmd FileType java set completefunc=javacomplete#CompleteParamsInf
-au FileType php call PHPFuncList()
+"autocmd FileType txt let g:airline#extensions#tabline#enabled = 0
 
-function PHPFuncList()
-
-    set dictionary-=/etc/vim/php_funclist.txt dictionary+=~/.vim/syntax/funclist.txt
-
-    set complete-=k complete+=k
-
-
-endfunction
-set nocompatible
-let g:mkdp_path_to_chrome = "open -a Google\\ Chrome"
-set re=1
-let $LANG = 'en'  "set message language
-set clipboard+=unnamed
-
-"dot
-autocmd bufnewfile *.dot call Headerdot ()
-function Headerdot ()
-call append (0 ,"digraph G{")
-call append (1 ,"")
-call append (2 ,"}")
-normal 3G
-endf
-
-" graphviz
-let g:WMGraphviz_dot = "dot"
-let g:WMGraphviz_output = "png"
-let g:WMGraphviz_viewer = "open"
-let g:WMGraphviz_shelloptions = ""
-nmap <Leader>lv :w<CR>:! dot -Tpng -o %<.png % <CR>:! open %<.png <CR>
-nmap <Leader>ls :w<CR>:! dot -Tsvg -o %<.svg % <CR>:! open %<.svg <CR>
-nmap <Leader>lp :w<CR>:! dot -Tpdf -o %<.pdf % <CR>:! open %<.pdf <CR>
 
 let g:EasyMotion_smartcase = 1
 "let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
-nmap <Left> <Plug>(easymotion-linebackward)
-nmap <Down> <Plug>(easymotion-j)
-nmap <Up> <Plug>(easymotion-k)
-nmap <Right> <Plug>(easymotion-lineforward)
+"nmap <Left> <Plug>(easymotion-linebackward)
+"nmap <Down> <Plug>(easymotion-j)
+"nmap <Up> <Plug>(easymotion-k)
+"nmap <Right> <Plug>(easymotion-lineforward)
 " 重复上一次操作, 类似repeat插件, 很强大
 map <Leader><leader>. <Plug>(easymotion-repeat)
 
@@ -418,88 +245,16 @@ let g:quickrun_config = {
 \   },
 \}
 let g:quickrun_no_default_key_mappings = 1
-map <F10> :QuickRun<CR>
-"Map window switch
-map <silent> <C-Up> :wincmd k<CR>
-map <silent> <C-Down> :wincmd j<CR>
-map <silent> <C-Left> :wincmd h<CR>
-map <silent> <C-Right> :wincmd l<CR>
 "change color
-hi Pmenu ctermfg=black ctermbg=yellow  guibg=#444444
-hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+hi Pmenu ctermfg=black ctermbg=gray guibg=white
+hi PmenuSel ctermfg=6 ctermbg=4 guibg=#444444 guifg=#ffffff
+
 "let g:Lf_ShortcutF = '<C-P>'
 let g:acp_completeoptPreview = 1
-""AsynComplete
-call asyncomplete#register_source(asyncomplete#sources#gocode#get_source_options({
-    \ 'name': 'gocode',
-    \ 'whitelist': ['go'],
-    \ 'completor': function('asyncomplete#sources#gocode#completor'),
-    \ 'config': {
-    \    'gocode_path': expand('~/go/bin/gocode')
-    \  },
-    \ }))
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-    \ 'name': 'file',
-    \ 'whitelist': ['*'],
-    \ 'priority': 10,
-    \ 'completor': function('asyncomplete#sources#file#completor')
-    \ }))
-
-call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-\ 'name': 'omni',
-\ 'whitelist': ['*'],
-\ 'blacklist': ['html'],
-\ 'completor': function('asyncomplete#sources#omni#completor')
-\  }))
-
-"python mode
-let g:pymode_rope_lookup_project = 0
-let g:pyflakes_use_quickfix = 1
-let python_highlight_all = 1
-let g:pymode_folding = 0
-let g:pymode_run = 0
-let g:pymode_python = 'python3'
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0    
-let g:pymode_breakpoint = 0
-let g:pymode_lint = 0
 
 
 
-"AutoComplPop
-let g:acp_completeoptPreview = 0
-let g:jedi#popup_select_first=0
-if has('python3')
-    call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
-        \ 'name': 'ultisnips',
-        \ 'whitelist': ['*'],
-        \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-        \ }))
-endif
 
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-autocmd User asyncomplete_setup call asyncomplete#register_source(
-    \ asyncomplete#sources#clang#get_source_options())
-"map go-to deinition
-nnoremap <Leader>b :LspDefinition <CR> 
-autocmd FileType typescript setlocal omnifunc=lsp#complete
-
-"codi
-let g:codi#interpreters = {
-                  \ 'python': {
-                      \ 'bin': 'python3',
-                      \ 'prompt': '^\(>>>\|\.\.\.\) ',
-                      \ },
-                  \ }
-
-let g:codi#width = 40
 "rainbow
 let g:rainbow_conf = {
 	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -532,5 +287,73 @@ set cmdheight=2
 let g:termdebug_wide = 100
 :packadd! termdebug
 
-"R syntax check
-let g:ale_r_lintr_lint_package = 1
+
+" file is large from 1MB
+let g:LargeFile = 500 * 1024 * 1024 * 1
+augroup LargeFile
+autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+function LargeFile()
+" no syntax highlighting etc
+set eventignore+=FileType
+" save memory when other file is viewed
+setlocal bufhidden=unload
+" no undo possible
+setlocal undolevels=-1
+syntax off
+" display message
+autocmd VimEnter *  echo "The file is larger than " . (g:LargeFile / 1024 ) . " MB, so some options are changed (see .vimrc for details)."
+endfunction
+
+filetype plugin on
+augroup filetypedetect
+	au! BufNewFile,BufRead *.jemdoc setf jemdoc
+augroup END
+
+" Last line is for proper wrapping of jemdoc lists, etc.
+autocmd Filetype jemdoc setlocal comments=:#,fb:-,fb:.,fb:--,fb:..,fb:\:
+
+map <leader>p :FZF<cr>
+
+" org - vim mode
+let g:clap_theme = 'material_design_dark'
+let g:org_agenda_files=['~/orgmode/index.org']
+
+" vimtex
+augroup vimtex_config
+    au!
+    au User VimtexEventQuit call vimtex#compiler#clean(0)
+augroup END
+let g:vimtex_quickfix_latexlog = {'default' : 0}
+nnoremap \lc :VimtexStop<cr>:VimtexClean<cr>
+let g:vimtex_view_method = 'skim'
+
+"vim orgmode
+let maplocalleader = ','
+
+
+let g:Lf_DefaultExternalTool = "find"
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+if executable('p4ls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'p4ls',
+        \ 'cmd': {server_info->['p4ls']},
+        \ 'allowlist': ['p4'],
+        \ })
+endif
+
+
+let g:floaterm_keymap_new = '<Leader>t'
+set undodir=$HOME/.vim/undo     "directory where the undo files will be stored
+set undofile 
